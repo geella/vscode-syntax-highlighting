@@ -1,0 +1,46 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "QLY LANG",
+	"patterns": [
+		{ "include": "#comments" },
+		{ "include": "#special" },
+		{ "include": "#keywords" },
+		{ "include": "#function" },
+		{ "include": "#types" },
+		{ "include": "#numbers" },
+		{ "include": "#strings" },
+		{ "include": "#errors" },
+		{ "include": "#identifiers" }
+	],
+	"repository": {
+		"numbers": { "name": "constant.numeric",  "match": "[0-9]" },
+		"errors": { "name": "invalid", "begin": "[0-9]", "end": "[a-zA-Z0-9]" },
+		"identifiers": { "name": "variable", "match": "[a-zA-Z0-9]" },
+		"types": { "name": "entity.name.class", "match": "\\b(undefined|number|string|boolean|array|tuple|json|void)\\b" },
+		"special": { "name": "keyword.control", "match": "\\b(import|from|export)\\b" },
+		"function": { "patterns": [ { "captures": { "1": {"name":"entity.name.function" } }, "name": "punctuation.definition.parameters", "match": "\\b(\\w+)(?:\\s+([-a-zA-Z0-9_]+))?\\s*(\\()" } ] },
+		"keywords": { "name": "constant.character", "match": "\\b(class|constructor|this|public|private|async|function|const|var|in|or|if|else|while|for|return|true)\\b" },
+		"strings": { "name": "string.regexp", "begin": "'", "end": "'", "patterns": [{ "name": "constant.character.escape.qly", "match": "\\\\." }]},
+		"comments": {
+			"patterns": [
+				{
+					"begin": "/\\*\\*(?!/)",
+					"captures": { "0": { "name": "punctuation.definition.comment.json" } },
+					"end": "\\*/",
+					"name": "comment.block.documentation.json"
+				},
+				{
+					"begin": "/\\*",
+					"captures": { "0": { "name": "punctuation.definition.comment.json" } },
+					"end": "\\*/",
+					"name": "comment.block.json"
+				},
+				{
+					"captures": { "1": { "name": "punctuation.definition.comment.json" } },
+					"match": "(//).*$\\n?",
+					"name": "comment.line.double-slash.js"
+				}
+		] }
+	},
+	"scopeName": "source.qly"
+}

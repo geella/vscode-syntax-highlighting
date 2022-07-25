@@ -1,0 +1,25 @@
+{
+    "name": "qly",
+    "displayName": "QLY",
+    "description": "language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.69.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "qly",
+            "aliases": ["QLY LANG", "qly"],
+            "extensions": [".qly"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "qly",
+            "scopeName": "source.qly",
+            "path": "./syntaxes/qly.tmLanguage.json"
+        }]
+    }
+}
